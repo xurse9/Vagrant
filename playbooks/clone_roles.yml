@@ -1,0 +1,19 @@
+---
+- name: 
+  hosts: all
+  become: true
+  vars:
+    git_repository: 'https://github.com/xurse9/Ansible_roles.git'
+    git_branch: 'master'
+  tasks:
+    - name: Create directory
+      ansible.builtin.file:
+        path: /etc/ansible/roles
+        state: directory
+        recurse: yes
+        mode: '0755'
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: '{{ git_repository }}'
+        dest: '/etc/ansible/roles'
+        version: '{{ git_branch }}'

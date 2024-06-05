@@ -34,6 +34,7 @@
         state: present
         key: "{{ lookup('file', '/home/vagrant/.ssh/authorized_keys') }}"
   roles:
+    - packages
     - geerlingguy.docker
     - deekayen.awscli2
     - diodonfrost.terraform
